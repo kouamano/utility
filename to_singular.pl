@@ -14,6 +14,8 @@ while(<>){
 		print "$term\n";
 	}elsif($st2 eq "ss"){
 		print "$_\n";
+	}elsif($st2 eq "us"){
+		print "$_\n";
 	}elsif($st2 eq "'s"){
 		print "$_\n";
 	}elsif($st1 eq "s" && $len <= 4){
