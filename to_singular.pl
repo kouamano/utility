@@ -10,6 +10,9 @@ while(<>){
 	$st1 = substr($term,$len-1,1);
 	$last = $st1;
 	$st1 = lc($st1);
+	#print "$st1\n";
+	#print "Orig:$_\n";
+	#print "$len\n";
 	if($st3 eq "ies"){
 		substr($term,$len-3,3,"y");
 		print "$term\n";
@@ -19,6 +22,12 @@ while(<>){
 		print "$_\n";
 	}elsif($st2 eq "'s"){
 		print "$_\n";
+	}elsif($st1 eq "s" && $len <= 4){
+		print "$_\n";
+	}elsif($st1 eq "s" && $len > 4){
+		#print "Hit";
+		substr($term,$len-1,1,"");
+		print "$term\n";
 	}elsif($last eq "s"){
 		$tmp = $term;
 		$tmp2 = $_;
@@ -29,11 +38,6 @@ while(<>){
 			print "$tmp2\n";
 			next;
 		}
-	}elsif($st1 eq "s" && $len <= 4){
-		print "$_\n";
-	}elsif($st1 eq "s" && $len > 4){
-		substr($term,$len-1,1,"");
-		print "$term\n";
 	}else{
 		print "$_\n";
 	}
