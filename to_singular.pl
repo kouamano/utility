@@ -19,6 +19,11 @@ while(<>){
 		print "$_\n";
 	}elsif($st2 eq "'s"){
 		print "$_\n";
+	}elsif($st1 eq "s" && $len <= 4){
+		print "$_\n";
+	}elsif($st1 eq "s" && $len > 4){
+		substr($term,$len-1,1,"");
+		print "$term\n";
 	}elsif($last eq "s"){
 		$tmp = $term;
 		$tmp2 = $_;
@@ -27,15 +32,9 @@ while(<>){
 		$tmp = uc($tmp);
 		if($tmp eq $tmp2 && $len > 3){
 			print "$tmp2\n";
-			goto OTHER;
+			next;
 		}
-	}elsif($st1 eq "s" && $len <= 4){
-		print "$_\n";
-	}elsif($st1 eq "s" && $len > 4){
-		substr($term,$len-1,1,"");
-		print "$term\n";
 	}else{
-		OTHER:
 		print "$_\n";
 	}
 }
