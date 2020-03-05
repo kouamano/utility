@@ -4,7 +4,7 @@ while(<>){
 	if($_ =~ /^>/){
 		$count++;
 		chomp;
-		print "$_|$count";
+		print "$_|$count|\n";
 	}else{
 		print $_;
 	}
