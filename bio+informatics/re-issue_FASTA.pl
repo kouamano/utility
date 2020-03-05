@@ -10,8 +10,8 @@ while(<IN>){
 		$_ =~ s/\s+$//;
 		$_ =~ s/\s/_/g;
 		print ">gi|";
-		print "${count}|ref|${count}.1|$head|";
-		print "$_\n";
+		print "${count}|ref|${count}.1|$head\n";
+		#print "$_\n";
 		$count++;
 	}else{
 		print $_;
