@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 $file = $ARGV[0];
 $head = $ARGV[1];
-$count = 0;
+$count = 1;
 open(IN,$file);
 while(<IN>){
 	if($_ =~ /^>/){
