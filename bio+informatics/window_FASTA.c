@@ -145,7 +145,7 @@ int main(int argc, char **argv){
 	if(opt.gap == 0){
 		int SN = 0;
 		printf("%s_",opt.output_head);
-		printf(opt.serial_NO_type,0);
+		printf(opt.serial_NO_type,SN+1);
 		printf(SEP);
 		while((c = getc(IN)) != EOF){
 			if(c>=0x40 && c<=0x7e){
@@ -154,7 +154,7 @@ int main(int argc, char **argv){
 				if(ptr%opt.size == 0){
 					SN++;
 					printf("\n%s_",opt.output_head);
-					printf(opt.serial_NO_type,SN);
+					printf(opt.serial_NO_type,SN+1);
 					printf(SEP);
 				}
 			}
@@ -166,7 +166,7 @@ int main(int argc, char **argv){
 		int SN = 0;
 		int a = 0;
 		printf("%s_",opt.output_head);
-		printf(opt.serial_NO_type,0);
+		printf(opt.serial_NO_type,SN+1);
 		printf(SEP);
 		while((c = getc(IN)) != EOF){
 			if(c>=0x40 && c<=0x7e){
@@ -177,7 +177,7 @@ int main(int argc, char **argv){
 				if(a == opt.size){
 					SN++;
 					printf("\n%s_",opt.output_head);
-					printf(opt.serial_NO_type,SN);
+					printf(opt.serial_NO_type,SN+1);
 					printf(SEP);
 				}
 				ptr++;
@@ -209,7 +209,7 @@ int main(int argc, char **argv){
 			}
 		}
 		printf("%s_",opt.output_head);
-		printf(opt.serial_NO_type,SN);
+		printf(opt.serial_NO_type,SN+1);
 		printf("\n");
 		printf("%s",block);
 		strncpy(tail,block+opt.size+opt.gap,-opt.gap);
@@ -230,7 +230,7 @@ int main(int argc, char **argv){
 					//printf("[%d]",opt.size+opt.gap);
 					//strncpy(tail,block+opt.size+opt.gap+opt.gap,-opt.gap);
 					printf("%s_",opt.output_head);
-					printf(opt.serial_NO_type,SN);
+					printf(opt.serial_NO_type,SN+1);
 					printf("\n");
 					if(ptr == 0){
 						printf("%s",tail);
