@@ -20,11 +20,9 @@ open(IN,$blastres);
 while(<IN>){
 	if($_ =~ /^>/){
 		print $_;
-		chomp($_);
-		$ref = $_;
-		$ref = s/^\s+//;
-		$ref = s/\s+$//;
-		$ref =~ s/^.[^\|]+\|//;
+		@arr=();
+		@arr = split(/\|/,$_);
+		$ref = "$arr[1]";
 		print "===$ref===";
 	}else{
 		print $_;
