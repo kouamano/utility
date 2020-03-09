@@ -9,23 +9,20 @@ while(<IN>){
 		@arr = split(/\|/,$_);
 		$len = @arr;
 		$line = "$arr[$len-2]"."\.1";
-		#print "$line\n";
 		$hs{$line} = $_;
 	}
 }
 close(IN);
-#print $hs{'123.1'};
 
 open(IN,$blastres);
 while(<IN>){
 	if($_ =~ /^>/){
 		chomp;
-		print $_;
 		@arr=();
 		@arr = split(/\|/,$_);
 		$ref = "$arr[1]";
-		#print "===$ref===";
 		print $hs{$ref};
+		print $_;
 	}else{
 		print $_;
 	}
