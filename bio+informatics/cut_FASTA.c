@@ -98,7 +98,9 @@ int get_option(int optc, char **optv, struct option *opt){
 		}else if(strcmp(optv[i],"-o") == 0){
 			opt->output_with_head = 0;
 		}else if(strncmp(optv[i],"-O",2) == 0){
-			opt->output_with_head = 1; sscanf(optv[i],"-O%s",opt->output_head); }else if(strncmp(optv[i],"-H",2) == 0){
+			opt->output_with_head = 1;
+			sscanf(optv[i],"-O%s",opt->output_head); 
+		}else if(strncmp(optv[i],"-H",2) == 0){
 			opt->output_with_head = 1;
 			opt->output_with_original_head = 1;
 			sscanf(optv[i],"-H%s",opt->output_head);
