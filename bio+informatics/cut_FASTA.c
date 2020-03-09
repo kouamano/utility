@@ -168,6 +168,7 @@ int main(int argc, char **argv){
 	int count_position = 0;
 	int count_char = 0;
 	int count_word = 0;
+	int head_ptr = 0;
 	//int i = 0;
 	/* *) */
 	/* (* option operations */
@@ -207,17 +208,22 @@ int main(int argc, char **argv){
 			}
 		}
 	}else{
+		head_ptr = 0;
 		while((c = getc(IN)) != '>'){
 			printf("==%c==",c);
 		}
 		while((c = getc(IN)) != '\n'){
+			opt.original_head[head_ptr] = c;
 			printf("--%c--",c);
+			head_ptr++;
 		}
+		opt.original_head[head_ptr] = '\0';
 	}
 	if(opt.alph_only == 1){
 		if(opt.start > 0){
 			if(opt.output_with_head == 1){
 				printf(">");
+				printf("%s",opt.original_head);
 				printf(opt.output_head,count_word);
 				printf("\n");
 			}
@@ -233,6 +239,7 @@ int main(int argc, char **argv){
 		}
 		if(opt.output_with_head == 1){
 			printf(">");
+			printf("%s",opt.original_head);
 			printf(opt.output_head,count_word);
 			printf("\n");
 		}
@@ -243,6 +250,7 @@ int main(int argc, char **argv){
 					printf("\n");
 					if(opt.output_with_head == 1){
 						printf(">");
+						printf("%s",opt.original_head);
 						printf(opt.output_head,count_word);
 						printf("\n");
 					}
@@ -257,6 +265,7 @@ int main(int argc, char **argv){
 		if(opt.start > 0){
 			if(opt.output_with_head == 1){
 				printf(">");
+				printf("%s",opt.original_head);
 				printf(opt.output_head,count_word);
 				printf("\n");
 			}
@@ -272,6 +281,7 @@ int main(int argc, char **argv){
 		}
 		if(opt.output_with_head == 1){
 			printf(">");
+			printf("%s",opt.original_head);
 			printf(opt.output_head,count_word);
 			printf("\n");
 		}
@@ -282,6 +292,7 @@ int main(int argc, char **argv){
 					printf("\n");
 					if(opt.output_with_head == 1){
 						printf(">");
+						printf("%s",opt.original_head);
 						printf(opt.output_head,count_word);
 						printf("\n");
 					}
@@ -296,6 +307,7 @@ int main(int argc, char **argv){
 		if(opt.start > 0){
 			if(opt.output_with_head == 1){
 				printf(">");
+				printf("%s",opt.original_head);
 				printf(opt.output_head,count_word);
 				printf("\n");
 			}
@@ -311,6 +323,7 @@ int main(int argc, char **argv){
 		}
 		if(opt.output_with_head == 1){
 			printf(">");
+			printf("%s",opt.original_head);
 			printf(opt.output_head,count_word);
 			printf("\n");
 		}
@@ -321,6 +334,7 @@ int main(int argc, char **argv){
 					printf("\n");
 					if(opt.output_with_head == 1){
 						printf(">");
+						printf("%s",opt.original_head);
 						printf(opt.output_head,count_word);
 						printf("\n");
 					}
