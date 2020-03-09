@@ -14,7 +14,7 @@ while(<IN>){
 	}
 }
 close(IN);
-print $hs{'123.1'};
+#print $hs{'123.1'};
 
 open(IN,$blastres);
 while(<IN>){
@@ -31,4 +31,3 @@ while(<IN>){
 	}
 }
 close(IN);
-
