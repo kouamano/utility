@@ -15,6 +15,7 @@ struct option {
 	int output_with_head;
 	int output_with_original_head;
 	int original_head_len;
+	int owrap_len;
 	char *original_head;
 	char *output_head;
 	int alph_only;
@@ -29,7 +30,7 @@ void print_help(void){
 	printf("\tcut_FASTA create plural fasta sequences from one fasta sequence.\n");
 	printf("\twith no overlap and no interval.\n");
 	printf("USEAGE:\n");
-	printf("\tcut_FASTA if=<file name> [start=<start position>] [size=<frame size (bp)>] [-I|-i] [-o|-O|-H<head>] [-a|-N|-A|-X] [-h] [-c]\n");
+	printf("\tcut_FASTA if=<file name> [start=<start position>] [size=<frame size (bp)>] [-W<over-wrap>] [-I|-i] [-o|-O|-H<head>] [-a|-N|-A|-X] [-h] [-c]\n");
 	printf("OPTIONS:\n");
 	printf("\t-h|--help:the program prints this message and exits.\n");
 	printf("\t-c|--check:the program prints its arguments and exits.\n");
@@ -63,6 +64,7 @@ int init_option(struct option *opt){
 	opt->output_with_head = 1;
 	opt->output_with_original_head = 0;
 	opt->original_head_len = 1000;
+	opt->owrap_len = 0;
 	if((opt->original_head = calloc(opt->original_head_len,sizeof(char))) == NULL){
 		fprintf(stderr,"[E]failed: calloc() in init_option() ");
 		fprintf(stderr," -- exit.\n");
@@ -113,6 +115,8 @@ int get_option(int optc, char **optv, struct option *opt){
 		}else if(strncmp(optv[i],"-H",2) == 0){
 			opt->output_with_head = 1;
 			sscanf(optv[i],"-H%s",opt->output_head);
+		}else if(strncmp(optv[i],"-W",2) == 0){
+			sscanf(optv[i],"-W%d",opt->owrap_len);
 		}else if(strcmp(optv[i],"-a") == 0){
 			opt->alph_only = 1;
 			//opt->ACGT_only = 0;
