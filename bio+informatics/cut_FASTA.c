@@ -14,6 +14,8 @@ struct option {
 	int input_with_head;
 	int output_with_head;
 	int output_with_original_head;
+	int original_head_len;
+	char *original_head;
 	char *output_head;
 	int alph_only;
 	//int ACGT_only;
@@ -27,7 +29,7 @@ void print_help(void){
 	printf("\tcut_FASTA create plural fasta sequences from one fasta sequence.\n");
 	printf("\twith no overlap and no interval.\n");
 	printf("USEAGE:\n");
-	printf("\tcut_FASTA if=<file name> [start=<start position>] [size=<frame size (bp)>] [-I|-i] [-o|-O<head>|-H<head>] [-a|-N|-A|-X] [-h] [-c]\n");
+	printf("\tcut_FASTA if=<file name> [start=<start position>] [size=<frame size (bp)>] [-I|-i] [-o|-O<head-len>|-H<head>] [-a|-N|-A|-X] [-h] [-c]\n");
 	printf("OPTIONS:\n");
 	printf("\t-h|--help:the program prints this message and exits.\n");
 	printf("\t-c|--check:the program prints its arguments and exits.\n");
@@ -60,6 +62,13 @@ int init_option(struct option *opt){
 	opt->input_with_head = 1;
 	opt->output_with_head = 1;
 	opt->output_with_original_head = 0;
+	opt->original_head_len = 1000;
+	if((opt->original_head = calloc(opt->original_head_len,sizeof(char))) == NULL){
+		fprintf(stderr,"[E]failed: calloc() in init_option() ");
+		fprintf(stderr," -- exit.\n");
+		exit(1);
+	}
+	opt->original_head[0] = '\0';
 	if((opt->output_head = calloc(STRING_SHORT_LEN,sizeof(char))) == NULL){
 		fprintf(stderr,"[E]failed: calloc() in init_option() ");
 		fprintf(stderr," -- exit.\n");
@@ -141,6 +150,8 @@ void print_option(struct option opt){
 	printf("input with head           :%d:\n",opt.input_with_head);
 	printf("output with head          :%d:\n",opt.output_with_head);
 	printf("output with original head :%d:\n",opt.output_with_original_head);
+	printf("original head len         :%d:\n",opt.original_head_len);
+	printf("original head             :%s:\n",opt.original_head);
 	printf("additional head           :%s:\n",opt.output_head);
 	printf("print alphabet only?      :%d:\n",opt.alph_only);
 	//printf("print ACGT only?          :%d:\n",opt.ACGT_only);
@@ -196,8 +207,12 @@ int main(int argc, char **argv){
 			}
 		}
 	}else{
-		while((c = getc(IN)) != '>');
-		while((c = getc(IN)) != '\n');
+		while((c = getc(IN)) != '>'){
+			printf("==%c==",c);
+		}
+		while((c = getc(IN)) != '\n'){
+			printf("--%c--",c);
+		}
 	}
 	if(opt.alph_only == 1){
 		if(opt.start > 0){
