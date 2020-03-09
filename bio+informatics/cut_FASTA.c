@@ -278,10 +278,10 @@ int main(int argc, char **argv){
 				printf("%c",c);
 
 				//test
-				if(count_char >= opt.size-opt.owrap_len){
-					printf("%d",opt.size-opt.owrap_len);
-					printf(":%d",count_char);
-				}
+				//if(count_char >= opt.size-opt.owrap_len){
+				//	printf("%d",opt.size-opt.owrap_len);
+				//	printf(":%d",count_char);
+				//}
 
 				count_char++;
 			}
