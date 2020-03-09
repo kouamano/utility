@@ -116,7 +116,7 @@ int get_option(int optc, char **optv, struct option *opt){
 			opt->output_with_head = 1;
 			sscanf(optv[i],"-H%s",opt->output_head);
 		}else if(strncmp(optv[i],"-W",2) == 0){
-			sscanf(optv[i],"-W%d",opt->owrap_len);
+			sscanf(optv[i],"-W%d",&opt->owrap_len);
 		}else if(strcmp(optv[i],"-a") == 0){
 			opt->alph_only = 1;
 			//opt->ACGT_only = 0;
@@ -156,6 +156,7 @@ void print_option(struct option opt){
 	printf("output with original head :%d:\n",opt.output_with_original_head);
 	printf("original head len         :%d:\n",opt.original_head_len);
 	printf("original head             :%s:\n",opt.original_head);
+	printf("over wrap len             :%d:\n",opt.owrap_len);
 	printf("additional head           :%s:\n",opt.output_head);
 	printf("print alphabet only?      :%d:\n",opt.alph_only);
 	//printf("print ACGT only?          :%d:\n",opt.ACGT_only);
@@ -173,6 +174,7 @@ int main(int argc, char **argv){
 	int count_char = 0;
 	int count_word = 0;
 	int head_ptr = 0;
+	char *owrap_BUFF;
 	//int i = 0;
 	/* *) */
 	/* (* option operations */
@@ -186,6 +188,11 @@ int main(int argc, char **argv){
 	}
 	if((opt.help == 1)||(opt.check == 1)){
 		exit(0);
+	}
+	owrap_BUFF = malloc((opt.owrap_len + 1)*sizeof(char));
+	if(owrap_BUFF == NULL){
+		perror("FAIL:malloc:owrap_BUFF\n");
+		exit(1);
 	}
 	/* *) */
 	/* (* test */
