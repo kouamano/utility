@@ -19,9 +19,13 @@ print $hs{'123.1'};
 open(IN,$blastres);
 while(<IN>){
 	if($_ =~ /^>/){
+		print $_;
+		chomp($_);
 		$ref = $_;
-		$ref =~ s/.[^\|]+\|//;
-		print $ref;
+		$ref = s/^\s+//;
+		$ref = s/\s+$//;
+		$ref =~ s/^.[^\|]+\|//;
+		print "===$ref===";
 	}else{
 		print $_;
 	}
