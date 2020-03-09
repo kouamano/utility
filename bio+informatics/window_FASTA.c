@@ -144,7 +144,7 @@ int main(int argc, char **argv){
 	/* (* while 1 */
 	if(opt.gap == 0){
 		int SN = 0;
-		printf("%s_",opt.output_head);
+		printf("%s|_",opt.output_head);
 		printf(opt.serial_NO_type,SN+1);
 		printf(SEP);
 		while((c = getc(IN)) != EOF){
