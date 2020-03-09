@@ -24,6 +24,7 @@ while(<IN>){
 		@arr = split(/\|/,$_);
 		$ref = "$arr[1]";
 		print "===$ref===";
+		print $hs{$ref};
 	}else{
 		print $_;
 	}
