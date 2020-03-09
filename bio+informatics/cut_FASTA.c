@@ -29,7 +29,7 @@ void print_help(void){
 	printf("\tcut_FASTA create plural fasta sequences from one fasta sequence.\n");
 	printf("\twith no overlap and no interval.\n");
 	printf("USEAGE:\n");
-	printf("\tcut_FASTA if=<file name> [start=<start position>] [size=<frame size (bp)>] [-I|-i] [-o|-O<head-len>|-H<head>] [-a|-N|-A|-X] [-h] [-c]\n");
+	printf("\tcut_FASTA if=<file name> [start=<start position>] [size=<frame size (bp)>] [-I|-i] [-o|-O|-H<head>] [-a|-N|-A|-X] [-h] [-c]\n");
 	printf("OPTIONS:\n");
 	printf("\t-h|--help:the program prints this message and exits.\n");
 	printf("\t-c|--check:the program prints its arguments and exits.\n");
@@ -40,7 +40,7 @@ void print_help(void){
 	printf("\t-I:with input head (annotation).\n");
 	printf("\t-o:output without head (annotation).\n");
 	printf("\t-O:output with head (annotation) specified by the user.\n");
-	printf("\t-H:output with original head (annotation).\n");
+	printf("\t-H:output with original head (Max size: 1000).\n");
 	printf("\t-a:data is expected to consist of alphabet text.\n");
 	printf("\t-N:data is expected to consist of nucleotide text.\n");
 	printf("\t-A:data is expected to consist of ASCII text.\n");
@@ -210,14 +210,17 @@ int main(int argc, char **argv){
 	}else{
 		head_ptr = 0;
 		while((c = getc(IN)) != '>'){
-			printf("==%c==",c);
+			//printf("==%c==",c);
 		}
 		while((c = getc(IN)) != '\n'){
 			opt.original_head[head_ptr] = c;
-			printf("--%c--",c);
+			//printf("--%c--",c);
 			head_ptr++;
 		}
 		opt.original_head[head_ptr] = '\0';
+		if(opt.output_with_original_head == 0){
+			opt.original_head[0] = '\0';
+		}
 	}
 	if(opt.alph_only == 1){
 		if(opt.start > 0){
