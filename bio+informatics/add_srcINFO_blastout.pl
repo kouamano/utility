@@ -23,7 +23,7 @@ while(<IN>){
 		@arr = split(/\|/,$_);
 		$ref = "$arr[1]";
 		print $hs{$ref};
-		print $_;
+		print ":$_";
 	}else{
 		print $_;
 	}
