@@ -19,11 +19,12 @@ print $hs{'123.1'};
 open(IN,$blastres);
 while(<IN>){
 	if($_ =~ /^>/){
+		chomp;
 		print $_;
 		@arr=();
 		@arr = split(/\|/,$_);
 		$ref = "$arr[1]";
-		print "===$ref===";
+		#print "===$ref===";
 		print $hs{$ref};
 	}else{
 		print $_;
