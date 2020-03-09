@@ -246,6 +246,11 @@ int main(int argc, char **argv){
 				if(((65<=(int)c)&&((int)c<=90))||((97<=(int)c)&&((int)c<=122))){
 					count_position++;
 					printf("%c",c);
+					//test
+					//if(count_position > opt.size-opt.owrap_len){
+					//	printf("%d",count_position);
+					//}
+
 				}
 			}
 			printf("\n");
@@ -271,6 +276,13 @@ int main(int argc, char **argv){
 					count_char = 0;
 				}
 				printf("%c",c);
+
+				//test
+				if(count_char >= opt.size-opt.owrap_len){
+					printf("%d",opt.size-opt.owrap_len);
+					printf(":%d",count_char);
+				}
+
 				count_char++;
 			}
 		}
