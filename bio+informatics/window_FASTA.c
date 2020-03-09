@@ -101,8 +101,6 @@ int main(int argc, char **argv){
 	int c = 0;
 	int i = 0;
 	int ptr = 0;
-	//int bfskip = 0;
-	//char *bf;
 	FILE *IN;
 
 	/* (* options */
@@ -217,8 +215,6 @@ int main(int argc, char **argv){
 			block[i] = 0;
 		}
 		ptr = 0;
-		//printf("hoge\n");
-		//printf("--%s--\n",tail);
 		while((c = getc(IN)) != EOF){
 			if(c>=0x40 && c<=0x7e){
 				if(ptr%(opt.size+opt.gap) == 0){
@@ -227,8 +223,6 @@ int main(int argc, char **argv){
 						printf("%s",tail);
 					}
 					printf("%s\n",block);
-					//printf("[%d]",opt.size+opt.gap);
-					//strncpy(tail,block+opt.size+opt.gap+opt.gap,-opt.gap);
 					printf("%s_",opt.output_head);
 					printf(opt.serial_NO_type,SN+1);
 					printf("\n");
@@ -236,7 +230,6 @@ int main(int argc, char **argv){
 						printf("%s",tail);
 					}
 					strncpy(tail,block+opt.size+opt.gap+opt.gap,-opt.gap);
-					//printf("=%s=",tail);
 					block_ptr = 0;
 					for(i=0;i<opt.gap;i++){
 						block[i] = 0;
@@ -253,27 +246,6 @@ int main(int argc, char **argv){
 		printf("\n");
 	}
 	/* *) */
-
-	/* (* while 2
-		int SN = 0;
-		printf("%s_",opt.output_head);
-		printf(opt.serial_NO_type,0);
-		printf(SEP);
-		while((c = getc(IN)) != EOF){
-			if(c>=0x40 && c<=0x7e){
-				printf("%c",c);
-				if(ptr%opt.size == (opt.size - 1)){
-					SN++;
-					printf("\n%s_",opt.output_head);
-					printf(opt.serial_NO_type,SN);
-					printf(SEP);
-					fseek(IN,opt.gap,SEEK_CUR);
-				}
-				ptr++;
-			}
-		}
-		printf("\n");
-	 *) */
 
 	/* (* file close*/
 	if(is_open > 0){
