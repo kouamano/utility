@@ -5,7 +5,7 @@ $blastres = $ARGV[1];
 open(IN,$dbseq);
 while(<IN>){
 	if($_ =~ /^>/){
-		chomp;
+		#chomp;
 		@arr=();
 		@arr = split(/\|/,$_);
 		$len = @arr;
@@ -23,7 +23,7 @@ while(<IN>){
 		@arr = split(/\|/,$_);
 		$ref = "$arr[1]";
 		print $hs{$ref};
-		print "$_\n";
+		print $_;
 	}else{
 		print $_;
 	}
