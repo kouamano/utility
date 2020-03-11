@@ -19,10 +19,10 @@ foreach(@arr){
 		#print $_;
 		@hit = split(/\n/,$_);
 		$dbentry = shift(@hit);
-		$dbentry =~ s/\s//g;
+		$dbentry =~ s/\s/_/g;
+		$hit = join(/ ;; /,@hit);
 		print " $dbentry ;; ";
 		print " $h ;; ";
-		$hit = join(/ ;; /,@hit);
 		print "$hit";
 		print ";;;\n";
 	}
