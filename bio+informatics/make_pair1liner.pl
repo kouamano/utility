@@ -7,7 +7,23 @@ $arr = join('',@arr);
 shift(@arr);
 $len = @arr;
 $arr[$len-1] =~ s/Database: .*//s;
-
-
-print "$arr[0]\n;;;\n";
-print "$arr[$len-1]\n;;;\n";
+foreach(@arr){
+	$Q = $_;
+	@Q = split(/>/s,$Q);
+	$H = shift(@Q);
+	"" =~ //;
+	$H =~ /([^\n]+)\n/;
+	$h = $1;
+	$h =~ s/\s//g;
+	foreach(@Q){
+		#print $_;
+		@hit = split(/\n/,$_);
+		$dbentry = shift(@hit);
+		$dbentry =~ s/\s//g;
+		print " $dbentry ;; ";
+		print " $h ;; ";
+		$hit = join(/ ;; /,@hit);
+		print "$hit";
+		print ";;;\n";
+	}
+}
