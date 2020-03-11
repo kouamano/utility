@@ -22,8 +22,8 @@ while(<IN>){
 		@arr=();
 		@arr = split(/\|/,$_);
 		$ref = "$arr[1]";
-		print $hs{$ref};
-		print ":$_";
+		print ":$hs{$ref}";
+		print "$_";
 	}else{
 		print $_;
 	}

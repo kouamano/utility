@@ -20,8 +20,8 @@ foreach(@arr){
 		$dbentry = shift(@hit);
 		$dbentry =~ s/\s/_/g;
 		$hit = join(' ;; ',@hit);
-		print " =====$dbentry ;; ";
-		print " -----$h ;; ";
+		print ":>$dbentry ;; ";
+		print "  $h ;; ";
 		print "$hit ;; ";
 		print ";;;\n";
 	}
