@@ -23,7 +23,7 @@ foreach(@arr){
 		$hit = join(/ ;; /,@hit);
 		print " $dbentry ;; ";
 		print " $h ;; ";
-		print "$hit";
+		print "$hit ;; ";
 		print ";;;\n";
 	}
 }
