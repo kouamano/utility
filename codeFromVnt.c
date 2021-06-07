@@ -12,6 +12,7 @@ int main(int argc, char **argv){
 	minibuff[0] = '\0';
 	int buff_count = 0;
 	int v = 0;
+	int noCL = 0;
 	if(argc == 1){
 		IFP = stdin;
 	}else if(argc == 2){
@@ -20,6 +21,7 @@ int main(int argc, char **argv){
 	}
 
 	while((c = fgetc(IFP)) != EOF){
+		noCL = 0;
 		if(BF != 1 && c != '='){
 			printf(":%02X:",c);
 		}
@@ -33,9 +35,9 @@ int main(int argc, char **argv){
 			buff_count++;
 			if(c == '\n'){
 				BF = 0;
-				minibuff[1] = '\n';
-				minibuff[2] = '\0';
+				minibuff[0] = '\0';
 				buff_count = 0;
+				noCL = 1;
 			}
 		}
 		if(buff_count == 3){
@@ -49,7 +51,7 @@ int main(int argc, char **argv){
 			BF = 0;
 			buff_count = 0;
 		}
-		if((char)c == '\n'){
+		if((char)c == '\n' && noCL == 0){
 			printf("%c",(char)c);
 		}
 		//printf("<%02X>",c);
