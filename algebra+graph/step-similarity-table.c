@@ -23,10 +23,10 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-#include "../include/alloc.c"
-#include "../include/list_operations.c"
-#include "../include/data_read.c"
-#include "../include/hash.c"
+#include "../../include/alloc.c"
+#include "../../include/list_operations.c"
+#include "../../include/data_read.c"
+#include "../../include/hash.c"
 #ifndef max
 #define max(a,b) (((a)>(b))?(a):(b))
 #endif
