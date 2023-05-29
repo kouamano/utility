@@ -1,6 +1,6 @@
 /*RNG                                 */
 /* input : dfile => dmat              */
-/*  inf : -1                          */
+/* inf : -1                           */
 /* output : edge list with dist       */
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,6 +28,8 @@ void help(void){
 	printf("  -c : check args.\n");
 	printf("  file of distance matrix : with no header.\n");
 	printf("  matrix size (must be defined) : size of square matrix.\n");
+	printf("EXTRA RULE:\n");
+	printf("  -1 is as Infinity in distance matrix.\n");
 }
 
 void status(void){
