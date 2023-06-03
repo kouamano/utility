@@ -15,7 +15,7 @@ int main(int argc, char **argv){
 	}
 
 	while((c = fgetc(IFP)) != EOF){
-		printf("%02X",c);
+		printf(":%02X:",c);
 		//if((char)c == '\n'){
 		//	printf("%c",(char)c);
 		//}
