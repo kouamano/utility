@@ -5,6 +5,7 @@
 #include <complex.h>
 
 int main(){
+	printf("size_t                      \t:%ld:\tbyte\n",sizeof(size_t));
 	printf("char                        \t:%ld:\tbyte\n",sizeof(char));
 	printf("_Bool                       \t:%ld:\tbyte\n",sizeof(_Bool));
 	printf("mode_t                      \t:%ld:\tbyte\n",sizeof(mode_t));
@@ -21,10 +22,11 @@ int main(){
 	printf("long double                 \t:%ld:\tbyte\n",sizeof(long double));
 	printf("_Complex                    \t:%ld:\tbyte\n",sizeof(_Complex));
 	printf("complex                     \t:%ld:\tbyte\n",sizeof(complex));
-	  complex c;
+	  double complex c;
 	printf("complex __real__            \t:%ld:\tbyte\n",sizeof(__real__ c));
 	printf("complex __imag__            \t:%ld:\tbyte\n",sizeof(__imag__ c));
 	printf("double _Complex             \t:%ld:\tbyte\n",sizeof(double _Complex));
+	printf("_Complex ddouble            \t:%ld:\tbyte\n",sizeof(_Complex double));
 	  double _Complex d;
 	printf("double _Comples __real__    \t:%ld:\tbyte\n",sizeof(__real__ d));
 	printf("double _Comples __imag__    \t:%ld:\tbyte\n",sizeof(__imag__ d));
