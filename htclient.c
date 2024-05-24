@@ -24,7 +24,7 @@ struct argop {
 
 void print_help(void){
 	printf("USAGE : \n");
-	printf("  htclient host=\"host\" path=\"path\" [cookie=\"cookie\"] [port=\"port\"]\n");
+	printf("  htclient host=\"host\" path=\"path\" [method=\"method\"] [cookie=\"cookie\"] [port=\"port\"]\n");
 }
 
 void init_options(struct argop *option){
