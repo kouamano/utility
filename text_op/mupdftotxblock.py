@@ -13,5 +13,8 @@ for page in doc:
 			continue
 		print('[[[',block["bbox"],']]]')
 		for line in block["lines"]:
+			print('{{{')
 			for span in line["spans"]:
 				print(span["text"])
+				# print('{{{',span["text"],'}}}')
+			print('}}}')
