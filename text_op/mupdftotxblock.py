@@ -9,6 +9,7 @@ for page in doc:
 	data = page.get_text("dict")
 	print('[[',page.rect,']]')
 	for block in data["blocks"]:
+		print('>>>')
 		if "lines" not in block:
 			continue
 		print('[[[',block["bbox"],']]]')
