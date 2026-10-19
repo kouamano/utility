@@ -7,7 +7,7 @@ doc = pymupdf.open(sys.argv[1])
 
 for page in doc:
 	data = page.get_text("dict")
-	print('[[',page.rect,']]')
+	print('!![[',page.rect,']]')
 	for block in data["blocks"]:
 		print('>>>')
 		if "lines" not in block:
