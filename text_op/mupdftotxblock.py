@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+# config start
 PG_RECT_S = '!![['
 PG_RECT_E = ']]'
 BL_DLM = '>>>'
@@ -7,6 +8,7 @@ BB_S = '[[['
 BB_E = ']]]'
 TX_S = '{{{'
 TX_E = '}}}'
+# config end
 
 import sys
 import pymupdf
