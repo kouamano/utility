@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
 # config start
-PG_RECT_S = '!![['
-PG_RECT_E = ']]'
-BL_DLM = '>>>'
-BB_S = '[[['
-BB_E = ']]]'
-TX_S = '{{{'
-TX_E = '}}}'
+pgRECTS = '!![['
+pgRECTE = ']]'
+blDLM = '>>>'
+bbS = '[[['
+bbE = ']]]'
+txS = '{{{'
+txE = '}}}'
 # config end
 
 import sys
@@ -17,14 +17,14 @@ doc = pymupdf.open(sys.argv[1])
 
 for page in doc:
 	data = page.get_text("dict")
-	print(PG_RECT_S,page.rect,PG_RECT_E)
+	print(pgRECTS,page.rect,pgRECTE)
 	for block in data["blocks"]:
-		print(BL_DLM)
+		print(blDLM)
 		if "lines" not in block:
 			continue
-		print(BB_S,block["bbox"],BB_E)
+		print(bbS,block["bbox"],bbE)
 		for line in block["lines"]:
-			print(TX_S)
+			print(txS)
 			for span in line["spans"]:
 				print(span["text"])
-			print(TX_E)
+			print(txE)
